@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dodiddone/theme/theme.dart';
+import 'package:flutter_dodiddone/pages/login_page.dart';
+import 'package:flutter_dodiddone/screens/profile.dart'; // Импортируем profile_page
 
+import '../theme/theme.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
-  
+
   State<MainPage> createState() => _MainPageState();
 }
 
@@ -14,7 +16,7 @@ class _MainPageState extends State<MainPage> {
   static const List<Widget> _widgetOptions = <Widget>[
     Text('Задачи'),
     Text('Сегодня'),
-    Text('Профиль'),
+    ProfilePage(), // Отображаем profile_page при выборе "Профиль"
     Text('Выполнено'),
   ];
 
@@ -23,7 +25,8 @@ class _MainPageState extends State<MainPage> {
       _selectedIndex = index;
     });
   }
-  
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
