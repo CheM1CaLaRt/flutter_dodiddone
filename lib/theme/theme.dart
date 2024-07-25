@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 class DoDidDoneTheme {
   static ThemeData lightTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
@@ -10,9 +9,13 @@ class DoDidDoneTheme {
     useMaterial3: true,
     // Добавляем стиль для кнопок
     elevatedButtonTheme: ElevatedButtonThemeData(
+      
       style: ButtonStyle(
         textStyle: MaterialStateProperty.all<TextStyle>(
           const TextStyle(color: Colors.white), // Текст кнопок белый
+        ),
+        backgroundColor: MaterialStateProperty.all<Color>(
+          const Color(0xFF4ceb8b), // Цвет фона кнопок
         ),
       ),
     ),
