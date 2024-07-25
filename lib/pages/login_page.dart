@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dodiddone/pages/main_page.dart';
 import '../theme/theme.dart';
-//import 'main_page.dart';
-
+import 'main_page.dart';
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
-
+  const LoginPage({Key? key}) : super(key: key);
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
-
 class _LoginPageState extends State<LoginPage> {
-  bool isLogin = true; // Flag for login/registration mode
-
+  bool isLogin = true; // Флаг для определения режима (вход/регистрация)
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
                     DoDidDoneTheme.lightTheme.colorScheme.primary,
                     DoDidDoneTheme.lightTheme.colorScheme.secondary,
                   ],
-            stops: const [0.1, 0.9], // Primary color takes 90%
+            stops: const [0.1, 0.9], // Основной цвет занимает 90%
           ),
         ),
         child: Padding(
@@ -38,10 +33,55 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // ... (Existing logo and title code)
-
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/0qode_symbol_1.png', // Замените на правильный путь к файлу
+                    height: 60, // Устанавливаем высоту изображения
+                  ),
+                  const SizedBox(width: 8),
+                  // Добавляем текст "zerocoder"
+                  Text(
+                    'zerocoder',
+                    style: TextStyle(
+                      fontSize: 62,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white, // Белый цвет текста
+                    ),
+                  ),
+                ],
+              ),
               const SizedBox(height: 30),
-              // Header
+              // Добавляем текст "Do"
+              RichText(
+                text: TextSpan(
+                  style: const TextStyle(
+                    fontSize: 48,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: 'Do',
+                      style: TextStyle(
+                        color: DoDidDoneTheme.lightTheme.colorScheme.primary,
+                      ),
+                    ),
+                    const TextSpan(
+                      text: 'Did',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    TextSpan(
+                      text: 'Done',
+                      style: TextStyle(
+                        color: DoDidDoneTheme.lightTheme.colorScheme.secondary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 30),
+              // Заголовок
               Text(
                 isLogin ? 'Вход' : 'Регистрация',
                 style: const TextStyle(
@@ -51,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 30),
-              // Email/Login Field
+              // Поле логина/почты
               const TextField(
                 decoration: InputDecoration(
                   hintText: 'Почта',
@@ -64,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              // Password Field
+              // Поле пароля
               const TextField(
                 obscureText: true,
                 decoration: InputDecoration(
@@ -78,8 +118,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              // Repeat Password Field (Only for Registration)
-              if (!isLogin)
+              // **Новое поле "Повторить пароль"**
+              if (!isLogin) // Отображаем только при регистрации
                 const TextField(
                   obscureText: true,
                   decoration: InputDecoration(
@@ -93,24 +133,13 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               const SizedBox(height: 30),
-              // Login/Register Button
+              // Кнопка "Войти"
               ElevatedButton(
                 onPressed: () {
-                  // Handle login/registration logic here
-                  if (isLogin) {
-                    // Navigate to MainPage (or handle login)
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MainPage()));
-                  } else {
-                    // Navigate to RegistrationPage (or handle registration)
-                    // Replace 'RegistrationPage' with your actual registration page
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage()));
-                  }
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MainPage()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: !isLogin
@@ -126,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text(isLogin ? 'Войти' : 'Зарегистрироваться'),
               ),
               const SizedBox(height: 20),
-              // Switch Mode Button
+              // Кнопка перехода на другую страницу
               TextButton(
                 onPressed: () {
                   setState(() {

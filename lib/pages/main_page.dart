@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dodiddone/theme/theme.dart';
+
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
-
-  @override
+  
   State<MainPage> createState() => _MainPageState();
 }
 
@@ -22,16 +23,28 @@ class _MainPageState extends State<MainPage> {
       _selectedIndex = index;
     });
   }
-
-  @override
+  
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0, // Убираем тень
+        elevation: 0,
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              DoDidDoneTheme.lightTheme.colorScheme.secondary,
+              DoDidDoneTheme.lightTheme.colorScheme.primary,
+            ],
+          ),
+        ),
+        child: Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -53,7 +66,6 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
       ),
     );
