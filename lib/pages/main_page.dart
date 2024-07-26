@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dodiddone/pages/login_page.dart';
 import 'package:flutter_dodiddone/screens/profile.dart'; // Импортируем profile_page
-
+import 'package:flutter_dodiddone/screens/all_tasks.dart';
 import '../theme/theme.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
-
+  @override
   State<MainPage> createState() => _MainPageState();
 }
 
@@ -14,10 +14,11 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('Задачи'),
+    TasksPage(),
     Text('Сегодня'),
-    ProfilePage(), // Отображаем profile_page при выборе "Профиль"
     Text('Выполнено'),
+    ProfilePage(), // Отображаем profile_page при выборе "Профиль"
+    
   ];
 
   void _onItemTapped(int index) {
