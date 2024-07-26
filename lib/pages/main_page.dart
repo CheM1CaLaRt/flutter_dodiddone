@@ -4,6 +4,7 @@ import 'package:flutter_dodiddone/screens/profile.dart'; // Импортируе
 import 'package:flutter_dodiddone/screens/all_tasks.dart';
 import '../theme/theme.dart';
 
+
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
   @override
@@ -16,9 +17,9 @@ class _MainPageState extends State<MainPage> {
   static const List<Widget> _widgetOptions = <Widget>[
     TasksPage(),
     Text('Сегодня'),
-    Text('Выполнено'),
     ProfilePage(), // Отображаем profile_page при выборе "Профиль"
-    
+    Text('Выполнено'),
+        
   ];
 
   void _onItemTapped(int index) {
